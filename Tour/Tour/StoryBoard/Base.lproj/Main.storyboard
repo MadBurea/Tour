@@ -12,7 +12,7 @@
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController storyboardIdentifier="DashBoardController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="DashBoardController" customModule="Tour" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC" customClass="DashBoardView" customModule="Tour" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -38,6 +38,9 @@
                                     <constraint firstAttribute="width" constant="70" id="XOd-3q-RAG"/>
                                 </constraints>
                                 <state key="normal" image="iconList"/>
+                                <connections>
+                                    <action selector="btnListAction:" destination="8bC-Xf-vdC" eventType="touchUpInside" id="SqJ-U9-hxp"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -55,12 +58,15 @@
                             <constraint firstItem="utO-Z7-WgG" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="wTO-Du-Jbb"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="utO-Z7-WgG" secondAttribute="trailing" id="ziv-d5-EUf"/>
                         </constraints>
+                        <connections>
+                            <outlet property="delegate" destination="BYZ-38-t0r" id="5Tl-rj-41T"/>
+                        </connections>
                     </view>
                     <navigationItem key="navigationItem" id="79C-yP-LeB"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="826.08695652173924" y="67.633928571428569"/>
+            <point key="canvasLocation" x="764" y="68"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="tsY-GB-Ed4">
@@ -80,10 +86,57 @@
             </objects>
             <point key="canvasLocation" x="-84.057971014492765" y="67.633928571428569"/>
         </scene>
+        <!--Location List Controller-->
+        <scene sceneID="uq2-mE-hsS">
+            <objects>
+                <viewController storyboardIdentifier="LocationListController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ejP-2y-C7c" customClass="LocationListController" customModule="Tour" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="MD6-dZ-ze6" customClass="LocationListView" customModule="Tour" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_LoginBg" translatesAutoresizingMaskIntoConstraints="NO" id="k4q-GX-taZ">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CWK-FB-4BZ">
+                                <rect key="frame" x="0.0" y="44" width="72" height="72"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="72" id="GKc-cq-Ths"/>
+                                    <constraint firstAttribute="width" constant="72" id="LiK-6F-2VT"/>
+                                </constraints>
+                                <inset key="contentEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
+                                <state key="normal" image="iconBack"/>
+                                <connections>
+                                    <action selector="btnBackAction:" destination="MD6-dZ-ze6" eventType="touchUpInside" id="tid-vB-pCc"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="qMM-7V-EJL"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="CWK-FB-4BZ" firstAttribute="leading" secondItem="qMM-7V-EJL" secondAttribute="leading" id="4nf-Ux-PJu"/>
+                            <constraint firstItem="k4q-GX-taZ" firstAttribute="top" secondItem="MD6-dZ-ze6" secondAttribute="top" id="5AA-xY-Inz"/>
+                            <constraint firstItem="k4q-GX-taZ" firstAttribute="trailing" secondItem="qMM-7V-EJL" secondAttribute="trailing" id="7VX-oh-2al"/>
+                            <constraint firstItem="k4q-GX-taZ" firstAttribute="leading" secondItem="qMM-7V-EJL" secondAttribute="leading" id="J8X-O9-WmH"/>
+                            <constraint firstItem="k4q-GX-taZ" firstAttribute="bottom" secondItem="MD6-dZ-ze6" secondAttribute="bottom" id="MkK-y5-edq"/>
+                            <constraint firstItem="CWK-FB-4BZ" firstAttribute="top" secondItem="qMM-7V-EJL" secondAttribute="top" id="TNd-sY-eii"/>
+                        </constraints>
+                        <connections>
+                            <outlet property="delegate" destination="ejP-2y-C7c" id="WZl-gS-Ejs"/>
+                        </connections>
+                    </view>
+                    <navigationItem key="navigationItem" id="pQP-rd-1ve"/>
+                    <size key="freeformSize" width="375" height="812"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Pni-ur-fSP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1431" y="54"/>
+        </scene>
     </scenes>
     <resources>
+        <image name="iconBack" width="52" height="52"/>
         <image name="iconList" width="103" height="102"/>
         <image name="icon_Background" width="375" height="812"/>
+        <image name="icon_LoginBg" width="375" height="812"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

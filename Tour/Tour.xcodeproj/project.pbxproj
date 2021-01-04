@@ -23,6 +23,9 @@
 		130E87C225A2C5F700D0C53A /* LIConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 130E87B825A2C5F700D0C53A /* LIConstant.swift */; };
 		130E87DB25A2CAA000D0C53A /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 130E87DA25A2CAA000D0C53A /* MapKit.framework */; };
 		130E87DD25A2CAC800D0C53A /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 130E87DC25A2CAC800D0C53A /* CoreLocation.framework */; };
+		130E87ED25A2D18600D0C53A /* LocationListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 130E87EC25A2D18600D0C53A /* LocationListController.swift */; };
+		130E87F525A2D1A400D0C53A /* LocationListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 130E87F425A2D1A400D0C53A /* LocationListView.swift */; };
+		130E87FA25A2D1BE00D0C53A /* DashBoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 130E87F925A2D1BE00D0C53A /* DashBoardView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +68,9 @@
 		130E87B825A2C5F700D0C53A /* LIConstant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LIConstant.swift; sourceTree = "<group>"; };
 		130E87DA25A2CAA000D0C53A /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		130E87DC25A2CAC800D0C53A /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		130E87EC25A2D18600D0C53A /* LocationListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationListController.swift; sourceTree = "<group>"; };
+		130E87F425A2D1A400D0C53A /* LocationListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationListView.swift; sourceTree = "<group>"; };
+		130E87F925A2D1BE00D0C53A /* DashBoardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashBoardView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,7 +156,8 @@
 		130E850D25A2C40400D0C53A /* Feature */ = {
 			isa = PBXGroup;
 			children = (
-				130E87D525A2C72900D0C53A /* DashBord Controller */,
+				130E87E725A2D03A00D0C53A /* Location List */,
+				130E87D525A2C72900D0C53A /* Map */,
 			);
 			path = Feature;
 			sourceTree = "<group>";
@@ -209,12 +216,13 @@
 			path = Utility;
 			sourceTree = "<group>";
 		};
-		130E87D525A2C72900D0C53A /* DashBord Controller */ = {
+		130E87D525A2C72900D0C53A /* Map */ = {
 			isa = PBXGroup;
 			children = (
-				130E84D825A2C3A700D0C53A /* DashBoardController.swift */,
+				130E87E925A2D15300D0C53A /* View */,
+				130E87E825A2D14C00D0C53A /* Controller */,
 			);
-			path = "DashBord Controller";
+			path = Map;
 			sourceTree = "<group>";
 		};
 		130E87D925A2CAA000D0C53A /* Frameworks */ = {
@@ -224,6 +232,47 @@
 				130E87DA25A2CAA000D0C53A /* MapKit.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		130E87E725A2D03A00D0C53A /* Location List */ = {
+			isa = PBXGroup;
+			children = (
+				130E87EB25A2D16900D0C53A /* View */,
+				130E87EA25A2D16300D0C53A /* Controller */,
+			);
+			path = "Location List";
+			sourceTree = "<group>";
+		};
+		130E87E825A2D14C00D0C53A /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				130E84D825A2C3A700D0C53A /* DashBoardController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		130E87E925A2D15300D0C53A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				130E87F925A2D1BE00D0C53A /* DashBoardView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		130E87EA25A2D16300D0C53A /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				130E87EC25A2D18600D0C53A /* LocationListController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		130E87EB25A2D16900D0C53A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				130E87F425A2D1A400D0C53A /* LocationListView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -360,9 +409,12 @@
 				130E87A725A2C54F00D0C53A /* Repository.swift in Sources */,
 				130E84D925A2C3A700D0C53A /* DashBoardController.swift in Sources */,
 				130E84D525A2C3A700D0C53A /* AppDelegate.swift in Sources */,
+				130E87ED25A2D18600D0C53A /* LocationListController.swift in Sources */,
 				130E84DF25A2C3A700D0C53A /* Tour.xcdatamodeld in Sources */,
 				130E87A825A2C54F00D0C53A /* DBManager.swift in Sources */,
+				130E87F525A2D1A400D0C53A /* LocationListView.swift in Sources */,
 				130E87C125A2C5F700D0C53A /* ProjectLog.swift in Sources */,
+				130E87FA25A2D1BE00D0C53A /* DashBoardView.swift in Sources */,
 				130E87C225A2C5F700D0C53A /* LIConstant.swift in Sources */,
 				130E87C025A2C5F700D0C53A /* LIApplication.swift in Sources */,
 			);
