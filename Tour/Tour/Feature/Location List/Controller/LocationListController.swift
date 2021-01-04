@@ -22,7 +22,3 @@ extension LocationListController: LocationListDelegate {
         navigationController?.popViewController(animated: true)
     }
 }
-
-//extension LocationListController: UITableViewDelegate, UITableViewDataSource {
-//    
-//}

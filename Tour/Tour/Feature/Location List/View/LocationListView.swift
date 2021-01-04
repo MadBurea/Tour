@@ -12,7 +12,6 @@ import UIKit
     func backNavigation(_ sender: UIButton)
 }
 
-
 class LocationListView: UIView {
     
     // MARK: - Outlets -

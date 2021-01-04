@@ -16,47 +16,60 @@ enum TourFlow {
     case None
 }
 
-
 class EditTourController: UIViewController {
     
-    @IBOutlet final weak private var textFieldTitle: UITextField!
-    @IBOutlet final weak private var textViewTitle : UITextView!
-    
-    @IBOutlet final weak private var addVideoButton : UIButton!
-    
-    var tourFlow : TourFlow = .None
+    // MARK: - Variable -
+    var tourFlow: TourFlow = .None
     
     // MARK: - View Life Cycle -
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
     }
 }
 
-
-extension EditTourController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    @IBAction final private func didTapOnSelectVideo() {
+// MARK: - Edit Tour Delegate -
+extension EditTourController: EditTourDelegate {
+    
+    func attachVideo(_ view: EditTourView) {
         let imagePickerController = UIImagePickerController()
         imagePickerController.sourceType = .photoLibrary
         imagePickerController.delegate = self
         imagePickerController.mediaTypes = [kUTTypeMovie as String]
+        imagePickerController.allowsEditing = true
+        imagePickerController.modalPresentationStyle = .overFullScreen
         present(imagePickerController, animated: true, completion: nil)
     }
     
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        let videoURL = info[UIImagePickerController.InfoKey(rawValue: "UIImagePickerControllerReferenceURL")] as? NSURL
-        print(videoURL)
-        picker.dismiss(animated: true, completion: nil)
+    func backNavigation(_ sender: UIButton) {
+        navigationController?.popViewController(animated: true)
+    }
+    
+    func saveVideo(_ view: EditTourView) {
         
-//        if let videoURL = videoURL{
-//          let player = AVPlayer(URL: videoURL)
-//
-//          let playerViewController = AVPlayerViewController()
-//          playerViewController.player = player
-//
-//          presentViewController(playerViewController, animated: true) {
-//            playerViewController.player!.play()
-//          }
-//        }
+    }
+}
+
+// MARK: - Picker delegate -
+extension EditTourController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        
+        if let videoUrl = info[UIImagePickerController.InfoKey.mediaURL] as? NSURL {
+            
+            let fileName = (videoUrl.lastPathComponent ?? "")
+            picker.dismiss(animated: true, completion: nil)
+            
+            setVideoName(VideoFile(fileName: fileName, filePath: videoUrl.path ?? ""))
+            
+            plog(fileName)
+            plog(videoUrl.path)
+        }
+    }
+    
+    private func setVideoName(_ video: VideoFile) {
+        if let view = view as? EditTourView {
+            view.videoName = video
+        }
     }
 }

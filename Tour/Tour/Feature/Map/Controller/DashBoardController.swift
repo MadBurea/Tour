@@ -8,27 +8,12 @@
 import UIKit
 import MapKit
 
-class DashBoardController: UIViewController, UIGestureRecognizerDelegate {
-    
-    @IBOutlet final private weak var mapView: MKMapView!
+class DashBoardController: UIViewController {
     
     // MARK: - View Life cycle -
     override func viewDidLoad() {
         super.viewDidLoad()
-        let gestureRecognizer = UITapGestureRecognizer(target: self, action:#selector(handleTap))
-        mapView.addGestureRecognizer(gestureRecognizer)
-    }
-    
-    @objc final private func handleTap(gestureRecognizer: UILongPressGestureRecognizer) {
         
-        let location = gestureRecognizer.location(in: mapView)
-        let coordinate = mapView.convert(location, toCoordinateFrom: mapView)
-        goToAddTour(coordinate)
-        
-        // Add annotation:
-//        let annotation = MKPointAnnotation()
-//        annotation.coordinate = coordinate
-//        mapView.addAnnotation(annotation)
     }
 }
 
