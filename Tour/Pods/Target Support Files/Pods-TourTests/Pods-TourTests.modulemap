@@ -1,0 +1,6 @@
+framework module Pods_TourTests {
+  umbrella header "Pods-TourTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
