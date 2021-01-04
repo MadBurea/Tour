@@ -31,7 +31,7 @@ extension DBManager {
         let objects = try getManagedObjects(with: predicate)
         return objects.compactMap { $0.model }
     }
-    
+ 
     func insert(item: RepositoryObject) throws {
         persistentContainer.viewContext.insert(item.toStorable(in: persistentContainer.viewContext, withSuperClass: nil, isMediaUpate: false)!)
         saveContext()
@@ -39,6 +39,11 @@ extension DBManager {
     
     func update(item: RepositoryObject) throws {
         try insert(item: item)
+    }
+    
+    func deleteObject(item: RepositoryObject.StoreType) throws {
+        persistentContainer.viewContext.delete(item)
+        saveContext()
     }
     
     func delete(item: RepositoryObject, with predicate: NSPredicate?) throws {
@@ -65,7 +70,7 @@ extension DBManager {
 }
 
 // MARK: - Core Data Saving support
-private extension DBManager {
+extension DBManager {
     
     final private func saveContext() {
         let context = persistentContainer.viewContext
@@ -80,7 +85,7 @@ private extension DBManager {
         }
     }
     
-    final private func getManagedObjects(with predicate: NSPredicate?) throws -> [RepositoryObject.StoreType] {
+    final func getManagedObjects(with predicate: NSPredicate?) throws -> [RepositoryObject.StoreType] {
         let entityName = String(describing: RepositoryObject.StoreType.self)
         let request = NSFetchRequest<RepositoryObject.StoreType>(entityName: entityName)
         request.predicate = predicate

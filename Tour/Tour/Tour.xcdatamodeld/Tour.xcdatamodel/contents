@@ -8,7 +8,13 @@
         <attribute name="longitude" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="title" optional="YES" attributeType="String"/>
     </entity>
+    <entity name="TourLocation" representedClassName="TourLocation" syncable="YES">
+        <attribute name="latitude" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="longitude" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="time" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+    </entity>
     <elements>
         <element name="Tour" positionX="-63" positionY="-18" width="128" height="119"/>
+        <element name="TourLocation" positionX="-54" positionY="36" width="128" height="74"/>
     </elements>
 </model>

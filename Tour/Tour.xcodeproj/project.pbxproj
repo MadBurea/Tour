@@ -31,6 +31,15 @@
 		13CCEA6825A30651001461D7 /* TourDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13CCEA6625A30651001461D7 /* TourDatabase.swift */; };
 		13CCEA6925A30651001461D7 /* QueryTour.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13CCEA6725A30651001461D7 /* QueryTour.swift */; };
 		13CCEA7425A3143F001461D7 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13CCEA7325A3143F001461D7 /* Extensions.swift */; };
+		13CCEA7A25A32825001461D7 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13CCEA7925A32825001461D7 /* LocationManager.swift */; };
+		13CCEA8B25A330E8001461D7 /* TourLocation+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13CCEA8925A330E7001461D7 /* TourLocation+CoreDataClass.swift */; };
+		13CCEA8C25A330E8001461D7 /* TourLocation+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13CCEA8A25A330E8001461D7 /* TourLocation+CoreDataProperties.swift */; };
+		13CCEA9225A33109001461D7 /* TourLocationDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13CCEA9125A33109001461D7 /* TourLocationDB.swift */; };
+		13CCEA9A25A332E5001461D7 /* QueryTourLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13CCEA9925A332E5001461D7 /* QueryTourLocation.swift */; };
+		13CCEAA125A34000001461D7 /* NotificationListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13CCEA9F25A34000001461D7 /* NotificationListView.swift */; };
+		13CCEAA225A34000001461D7 /* NotificationListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13CCEAA025A34000001461D7 /* NotificationListView.xib */; };
+		13CCEAA925A3408B001461D7 /* NoDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13CCEAA725A3408B001461D7 /* NoDataView.swift */; };
+		13CCEAAA25A3408B001461D7 /* NoDataView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13CCEAA825A3408B001461D7 /* NoDataView.xib */; };
 		8FD3429325A2D99A0006C23F /* EditTourController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FD3429025A2D99A0006C23F /* EditTourController.swift */; };
 		8FD3429425A2D99A0006C23F /* EditTourView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FD3429225A2D99A0006C23F /* EditTourView.swift */; };
 /* End PBXBuildFile section */
@@ -83,6 +92,15 @@
 		13CCEA6625A30651001461D7 /* TourDatabase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TourDatabase.swift; sourceTree = "<group>"; };
 		13CCEA6725A30651001461D7 /* QueryTour.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QueryTour.swift; sourceTree = "<group>"; };
 		13CCEA7325A3143F001461D7 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		13CCEA7925A32825001461D7 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		13CCEA8925A330E7001461D7 /* TourLocation+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TourLocation+CoreDataClass.swift"; sourceTree = "<group>"; };
+		13CCEA8A25A330E8001461D7 /* TourLocation+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TourLocation+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		13CCEA9125A33109001461D7 /* TourLocationDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TourLocationDB.swift; sourceTree = "<group>"; };
+		13CCEA9925A332E5001461D7 /* QueryTourLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueryTourLocation.swift; sourceTree = "<group>"; };
+		13CCEA9F25A34000001461D7 /* NotificationListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationListView.swift; sourceTree = "<group>"; };
+		13CCEAA025A34000001461D7 /* NotificationListView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NotificationListView.xib; sourceTree = "<group>"; };
+		13CCEAA725A3408B001461D7 /* NoDataView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoDataView.swift; sourceTree = "<group>"; };
+		13CCEAA825A3408B001461D7 /* NoDataView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NoDataView.xib; sourceTree = "<group>"; };
 		8FD3429025A2D99A0006C23F /* EditTourController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditTourController.swift; sourceTree = "<group>"; };
 		8FD3429225A2D99A0006C23F /* EditTourView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditTourView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -230,6 +248,7 @@
 				130E87B725A2C5F700D0C53A /* ProjectLog.swift */,
 				130E87B825A2C5F700D0C53A /* LIConstant.swift */,
 				13CCEA7325A3143F001461D7 /* Extensions.swift */,
+				13CCEA7925A32825001461D7 /* LocationManager.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -288,6 +307,8 @@
 		130E87EB25A2D16900D0C53A /* View */ = {
 			isa = PBXGroup;
 			children = (
+				13CCEAA625A3408B001461D7 /* No Data View */,
+				13CCEA9E25A34000001461D7 /* Notification List */,
 				130E87F425A2D1A400D0C53A /* LocationListView.swift */,
 			);
 			path = View;
@@ -296,6 +317,7 @@
 		13CCEA4325A3053C001461D7 /* Core data Classes */ = {
 			isa = PBXGroup;
 			children = (
+				13CCEA7E25A330B1001461D7 /* Tour Location */,
 				13CCEA4525A3054E001461D7 /* Tour */,
 			);
 			path = "Core data Classes";
@@ -304,6 +326,7 @@
 		13CCEA4425A30546001461D7 /* Database Model */ = {
 			isa = PBXGroup;
 			children = (
+				13CCEA9025A330F0001461D7 /* Tour Location */,
 				13CCEA4625A30553001461D7 /* Tour */,
 			);
 			path = "Database Model";
@@ -325,6 +348,42 @@
 				13CCEA6725A30651001461D7 /* QueryTour.swift */,
 			);
 			path = Tour;
+			sourceTree = "<group>";
+		};
+		13CCEA7E25A330B1001461D7 /* Tour Location */ = {
+			isa = PBXGroup;
+			children = (
+				13CCEA8925A330E7001461D7 /* TourLocation+CoreDataClass.swift */,
+				13CCEA8A25A330E8001461D7 /* TourLocation+CoreDataProperties.swift */,
+			);
+			path = "Tour Location";
+			sourceTree = "<group>";
+		};
+		13CCEA9025A330F0001461D7 /* Tour Location */ = {
+			isa = PBXGroup;
+			children = (
+				13CCEA9125A33109001461D7 /* TourLocationDB.swift */,
+				13CCEA9925A332E5001461D7 /* QueryTourLocation.swift */,
+			);
+			path = "Tour Location";
+			sourceTree = "<group>";
+		};
+		13CCEA9E25A34000001461D7 /* Notification List */ = {
+			isa = PBXGroup;
+			children = (
+				13CCEA9F25A34000001461D7 /* NotificationListView.swift */,
+				13CCEAA025A34000001461D7 /* NotificationListView.xib */,
+			);
+			path = "Notification List";
+			sourceTree = "<group>";
+		};
+		13CCEAA625A3408B001461D7 /* No Data View */ = {
+			isa = PBXGroup;
+			children = (
+				13CCEAA725A3408B001461D7 /* NoDataView.swift */,
+				13CCEAA825A3408B001461D7 /* NoDataView.xib */,
+			);
+			path = "No Data View";
 			sourceTree = "<group>";
 		};
 		8FD3428E25A2D99A0006C23F /* Edit Tour  */ = {
@@ -458,6 +517,8 @@
 				130E84E425A2C3AB00D0C53A /* LaunchScreen.storyboard in Resources */,
 				130E84E125A2C3AB00D0C53A /* Assets.xcassets in Resources */,
 				130E84DC25A2C3A700D0C53A /* Main.storyboard in Resources */,
+				13CCEAA225A34000001461D7 /* NotificationListView.xib in Resources */,
+				13CCEAAA25A3408B001461D7 /* NoDataView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -484,22 +545,29 @@
 			files = (
 				130E87A625A2C54F00D0C53A /* CoreDataService.swift in Sources */,
 				130E87A725A2C54F00D0C53A /* Repository.swift in Sources */,
+				13CCEA8B25A330E8001461D7 /* TourLocation+CoreDataClass.swift in Sources */,
+				13CCEA9A25A332E5001461D7 /* QueryTourLocation.swift in Sources */,
 				130E84D925A2C3A700D0C53A /* DashBoardController.swift in Sources */,
 				130E84D525A2C3A700D0C53A /* AppDelegate.swift in Sources */,
 				130E87ED25A2D18600D0C53A /* LocationListController.swift in Sources */,
+				13CCEAA925A3408B001461D7 /* NoDataView.swift in Sources */,
 				130E84DF25A2C3A700D0C53A /* Tour.xcdatamodeld in Sources */,
 				8FD3429325A2D99A0006C23F /* EditTourController.swift in Sources */,
 				13CCEA7425A3143F001461D7 /* Extensions.swift in Sources */,
 				13CCEA6825A30651001461D7 /* TourDatabase.swift in Sources */,
 				130E87A825A2C54F00D0C53A /* DBManager.swift in Sources */,
 				130E87F525A2D1A400D0C53A /* LocationListView.swift in Sources */,
+				13CCEAA125A34000001461D7 /* NotificationListView.swift in Sources */,
 				13CCEA6125A305FD001461D7 /* Tour+CoreDataClass.swift in Sources */,
+				13CCEA7A25A32825001461D7 /* LocationManager.swift in Sources */,
+				13CCEA9225A33109001461D7 /* TourLocationDB.swift in Sources */,
 				130E87C125A2C5F700D0C53A /* ProjectLog.swift in Sources */,
 				130E87FA25A2D1BE00D0C53A /* DashBoardView.swift in Sources */,
 				8FD3429425A2D99A0006C23F /* EditTourView.swift in Sources */,
 				13CCEA6225A305FD001461D7 /* Tour+CoreDataProperties.swift in Sources */,
 				130E87C225A2C5F700D0C53A /* LIConstant.swift in Sources */,
 				130E87C025A2C5F700D0C53A /* LIApplication.swift in Sources */,
+				13CCEA8C25A330E8001461D7 /* TourLocation+CoreDataProperties.swift in Sources */,
 				13CCEA6925A30651001461D7 /* QueryTour.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

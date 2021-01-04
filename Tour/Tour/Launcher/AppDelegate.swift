@@ -24,31 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         plog(paths[0])
         
         #endif
-       // checkLocationAuthorizationStatus()
+        TSLocationManger.locationManager().monitorLocation()
         return true
-    }
-    
-    final private func checkLocationAuthorizationStatus() {
-        locationManager.pausesLocationUpdatesAutomatically = false
-        locationManager.allowsBackgroundLocationUpdates = true
-        
-        locationManager.requestAlwaysAuthorization()
-        
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        locationManager.delegate = self
-        locationManager.startUpdatingLocation()
-    }
-}
-
-// MARK: - Location manager delegate -
-extension AppDelegate: CLLocationManagerDelegate {
-    
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        plog("New Location")
-        plog(locations)
-    }
-    
-    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        plog("Fail to \(error)")
     }
 }

@@ -63,3 +63,21 @@ extension String {
         )
     }
 }
+
+// MARK: - Get XIB -
+func getXIB<T: UIView>(type: T.Type) -> T {
+    guard let XIB = Bundle.main.loadNibNamed(String(describing: T.self),
+                                             owner: nil, options: [:])?.first as? T else {
+        fatalError(String(describing: T.self) + "\(NSLocalizedString("couldn't be found in Storyboard file", comment: ""))")
+    }
+    return XIB
+}
+
+// MARK: - Date -
+extension Date {
+   func getFormattedDate(format: String) -> String {
+        let dateformat = DateFormatter()
+        dateformat.dateFormat = format
+        return dateformat.string(from: self)
+    }
+}

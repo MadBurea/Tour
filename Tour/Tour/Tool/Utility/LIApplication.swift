@@ -14,11 +14,6 @@ class LIApplication {
     static let appDelegate = UIApplication.shared.delegate as! AppDelegate
     
     init() { }
-    
-    // MARK: - Prepare View -
-    func prepareView() {
-        
-    }
 }
 
 // MARK: - Application Bundle -
