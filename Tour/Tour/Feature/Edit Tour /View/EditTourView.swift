@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import MapKit
 
 struct VideoFile {
     var fileName = ""
@@ -15,8 +16,7 @@ struct VideoFile {
 // MARK: - View Delegate -
 @objc protocol EditTourDelegate {
     func attachVideo(_ view: EditTourView)
-    func saveVideo(_ view: EditTourView)
-    func backNavigation(_ sender: UIButton)
+    func backNavigation(_ view: EditTourView)
 }
 
 class EditTourView: UIView {
@@ -32,11 +32,20 @@ class EditTourView: UIView {
     @IBOutlet final weak private var uploadView : UIView!
     
     // MARK: - Constant -
-    private let tourTilteError = "Please enter tour title"
-    private let tourVideoError = "Please upload tour video"
-    private let alertTitle = "Alert"
-    private let ok = "Ok"
-    private var filePath = ""
+    final private let tourTilteError = "Please enter tour title"
+    final private let tourVideoError = "Please select tour video"
+    final private let tourSuccess = "Tour created successfully"
+    final private let alertTitle = "Alert"
+    final private let ok = "Ok"
+    final private var filePath = ""
+    final private var latitude: Double = 0
+    final private var longitude: Double = 0
+    
+    var tourFlow: TourFlow! {
+        didSet {
+            setTour()
+        }
+    }
     
     var videoName: VideoFile! {
         didSet {
@@ -72,13 +81,21 @@ private extension EditTourView {
     
     @IBAction final private func btnBackAction(_ sender: UIButton) {
         guard let delegate = delegate else { return }
-        delegate.backNavigation(sender)
+        delegate.backNavigation(self)
     }
     
     @IBAction final private func didTapOnSave() {
         if isValidation() {
-            guard let delegate = delegate else { return }
-            delegate.saveVideo(self)
+            setOfflineTour(TourDetails(title: textFieldTitle.text ?? "",
+                                       descriptions: textViewTitle.text,
+                                       filePath: filePath,
+                                       latitude: latitude,
+                                       longitude: longitude))
+            
+            alertOk(message: tourSuccess) {
+                guard let delegate = self.delegate else { return }
+                delegate.backNavigation(self)
+            }
         }
     }
 }
@@ -86,16 +103,19 @@ private extension EditTourView {
 // MARK: - Prepare View -
 private extension EditTourView {
     
-    private func alertOk(message: String) {
+    final private func alertOk(message: String,
+                               completionSucess: (() -> Void)? = nil) {
         
         let alert = UIAlertController(title: alertTitle,
                                       message: message,
                                       preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: ok, style: .default, handler: nil))
+        alert.addAction(UIAlertAction(title: ok, style: .default, handler: { _ in
+            completionSucess?()
+        }))
         LIApplication.appDelegate.window?.rootViewController?.present(alert, animated: true, completion: nil)
     }
     
-    private func isValidation() -> Bool {
+    final private func isValidation() -> Bool {
         
         if textFieldTitle.text?.isEmpty ?? false {
             alertOk(message: tourTilteError)
@@ -105,5 +125,23 @@ private extension EditTourView {
             return false
         }
         return true
+    }
+    
+    final private func setOfflineTour(_ tourDetails: TourDetails) {
+        let viewModel = QueryTour(with: DBManager(persistentContainer: persistance))
+        viewModel.insertList(response:tourDetails)
+    }
+    
+    final private func setTour() {
+        
+        switch tourFlow {
+        
+        case .AddTour(let location):
+            longitude = location.longitude
+            latitude = location.latitude
+            
+        default:
+            break
+        }
     }
 }

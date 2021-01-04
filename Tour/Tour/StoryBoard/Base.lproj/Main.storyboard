@@ -274,14 +274,26 @@
                                     <action selector="btnBackAction:" destination="tbp-cy-4ZV" eventType="touchUpInside" id="14P-A2-IOL"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="100" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="*" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Hl-GF-R1C">
+                                <rect key="frame" x="96" y="439" width="6.5" height="19"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <color key="textColor" red="1" green="0.2254108319" blue="0.1560056423" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tour Video" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aAA-Bh-mgE">
+                                <rect key="frame" x="20" y="439" width="76" height="19"/>
+                                <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="16"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="UvV-kW-k3l">
-                                <rect key="frame" x="20" y="439" width="335" height="110"/>
+                                <rect key="frame" x="10" y="466" width="355" height="110"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qKe-uz-OD9">
-                                        <rect key="frame" x="0.0" y="0.0" width="335" height="110"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="355" height="110"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_StudentBg" translatesAutoresizingMaskIntoConstraints="NO" id="syI-Wx-xMr">
-                                                <rect key="frame" x="0.0" y="0.0" width="335" height="110"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="355" height="110"/>
                                             </imageView>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="252" verticalHuggingPriority="251" image="iconUploadMedia" translatesAutoresizingMaskIntoConstraints="NO" id="f7h-2k-B1W">
                                                 <rect key="frame" x="26" y="26" width="96" height="58"/>
@@ -290,27 +302,27 @@
                                                     <constraint firstAttribute="height" constant="58" id="Tfx-qD-oAk"/>
                                                 </constraints>
                                             </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Upload Video" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WpV-D2-aqi">
-                                                <rect key="frame" x="155" y="47" width="85" height="16.5"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select Video" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WpV-D2-aqi">
+                                                <rect key="frame" x="168.5" y="47" width="78.5" height="16.5"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="14"/>
                                                 <color key="textColor" red="0.99607843139999996" green="0.27450980390000002" blue="0.015686274510000001" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Upload Media" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wHb-T8-yw7">
-                                                <rect key="frame" x="120" y="47" width="167" height="16.5"/>
+                                                <rect key="frame" x="120" y="47" width="187" height="16.5"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="14"/>
                                                 <color key="textColor" red="0.2901960784" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iconClose" translatesAutoresizingMaskIntoConstraints="NO" id="DNZ-Ow-la2">
-                                                <rect key="frame" x="297" y="49" width="12" height="12"/>
+                                                <rect key="frame" x="317" y="49" width="12" height="12"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="12" id="U36-5E-TYn"/>
                                                     <constraint firstAttribute="width" constant="12" id="wJW-FR-G10"/>
                                                 </constraints>
                                             </imageView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xuz-tS-Dpl">
-                                                <rect key="frame" x="0.0" y="0.0" width="335" height="110"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="355" height="110"/>
                                                 <connections>
                                                     <action selector="didTapOnSelectVideo" destination="tbp-cy-4ZV" eventType="touchUpInside" id="FMI-pU-3lc"/>
                                                 </connections>
@@ -361,6 +373,9 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="Ryb-Ka-bVY" firstAttribute="bottom" secondItem="S0R-n0-ugp" secondAttribute="bottom" id="0d6-Pc-tL2"/>
+                            <constraint firstItem="3Hl-GF-R1C" firstAttribute="leading" secondItem="aAA-Bh-mgE" secondAttribute="trailing" id="2Gg-Dp-YoV"/>
+                            <constraint firstItem="3Hl-GF-R1C" firstAttribute="bottom" secondItem="aAA-Bh-mgE" secondAttribute="bottom" id="3wh-Ki-1d0"/>
+                            <constraint firstItem="aAA-Bh-mgE" firstAttribute="top" secondItem="y87-c0-9ht" secondAttribute="bottom" constant="20" id="3yW-We-UbG"/>
                             <constraint firstItem="Ryb-Ka-bVY" firstAttribute="top" secondItem="S0R-n0-ugp" secondAttribute="top" id="9p3-c0-3n4"/>
                             <constraint firstItem="4ID-xd-0BY" firstAttribute="trailing" secondItem="y87-c0-9ht" secondAttribute="trailing" constant="20" id="JH7-y0-tiI"/>
                             <constraint firstItem="LKN-52-IYz" firstAttribute="leading" secondItem="4ID-xd-0BY" secondAttribute="leading" id="POA-E2-3Hc"/>
@@ -368,13 +383,15 @@
                             <constraint firstItem="4ID-xd-0BY" firstAttribute="trailing" secondItem="Ryb-Ka-bVY" secondAttribute="trailing" id="aws-Mf-D2z"/>
                             <constraint firstItem="LKN-52-IYz" firstAttribute="bottom" secondItem="tbp-cy-4ZV" secondAttribute="bottom" id="ayG-7W-Jfc"/>
                             <constraint firstItem="y87-c0-9ht" firstAttribute="top" secondItem="S0R-n0-ugp" secondAttribute="bottom" constant="20" id="dbS-RU-hCQ"/>
-                            <constraint firstItem="UvV-kW-k3l" firstAttribute="leading" secondItem="4ID-xd-0BY" secondAttribute="leading" constant="20" id="lre-ZE-jTj"/>
+                            <constraint firstItem="UvV-kW-k3l" firstAttribute="leading" secondItem="4ID-xd-0BY" secondAttribute="leading" constant="10" id="lre-ZE-jTj"/>
                             <constraint firstItem="S0R-n0-ugp" firstAttribute="top" secondItem="4ID-xd-0BY" secondAttribute="top" id="mPZ-Vy-R4P"/>
+                            <constraint firstItem="UvV-kW-k3l" firstAttribute="top" secondItem="aAA-Bh-mgE" secondAttribute="bottom" constant="8" id="pSI-v0-qR7"/>
+                            <constraint firstItem="3Hl-GF-R1C" firstAttribute="top" secondItem="aAA-Bh-mgE" secondAttribute="top" id="qiG-oG-i07"/>
                             <constraint firstItem="LKN-52-IYz" firstAttribute="trailing" secondItem="4ID-xd-0BY" secondAttribute="trailing" id="rG3-lD-9pg"/>
                             <constraint firstItem="y87-c0-9ht" firstAttribute="leading" secondItem="4ID-xd-0BY" secondAttribute="leading" constant="20" id="rOJ-au-dZv"/>
                             <constraint firstItem="LKN-52-IYz" firstAttribute="top" secondItem="tbp-cy-4ZV" secondAttribute="top" id="yWk-45-rUx"/>
-                            <constraint firstItem="UvV-kW-k3l" firstAttribute="top" secondItem="y87-c0-9ht" secondAttribute="bottom" constant="20" id="zIf-Ut-XTF"/>
-                            <constraint firstItem="4ID-xd-0BY" firstAttribute="trailing" secondItem="UvV-kW-k3l" secondAttribute="trailing" constant="20" id="zl9-55-bO9"/>
+                            <constraint firstItem="4ID-xd-0BY" firstAttribute="trailing" secondItem="UvV-kW-k3l" secondAttribute="trailing" constant="10" id="zl9-55-bO9"/>
+                            <constraint firstItem="aAA-Bh-mgE" firstAttribute="leading" secondItem="y87-c0-9ht" secondAttribute="leading" id="zlY-UA-p9W"/>
                         </constraints>
                         <connections>
                             <outlet property="addVideoButton" destination="Ryb-Ka-bVY" id="lGe-GI-UfM"/>

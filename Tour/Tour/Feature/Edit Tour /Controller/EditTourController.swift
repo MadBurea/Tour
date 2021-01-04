@@ -24,7 +24,23 @@ class EditTourController: UIViewController {
     // MARK: - View Life Cycle -
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        prepareView()
+    }
+}
+
+// MARK: - Prepare View  -
+private extension EditTourController {
+    
+    final private func setVideoName(_ video: VideoFile) {
+        if let view = view as? EditTourView {
+            view.videoName = video
+        }
+    }
+    
+    final private func prepareView() {
+        if let view = view as? EditTourView {
+            view.tourFlow = tourFlow
+        }
     }
 }
 
@@ -41,12 +57,8 @@ extension EditTourController: EditTourDelegate {
         present(imagePickerController, animated: true, completion: nil)
     }
     
-    func backNavigation(_ sender: UIButton) {
+    func backNavigation(_ view: EditTourView) {
         navigationController?.popViewController(animated: true)
-    }
-    
-    func saveVideo(_ view: EditTourView) {
-        
     }
 }
 
@@ -64,12 +76,6 @@ extension EditTourController: UIImagePickerControllerDelegate, UINavigationContr
             
             plog(fileName)
             plog(videoUrl.path)
-        }
-    }
-    
-    private func setVideoName(_ video: VideoFile) {
-        if let view = view as? EditTourView {
-            view.videoName = video
         }
     }
 }

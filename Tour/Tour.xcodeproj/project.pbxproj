@@ -26,6 +26,11 @@
 		130E87ED25A2D18600D0C53A /* LocationListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 130E87EC25A2D18600D0C53A /* LocationListController.swift */; };
 		130E87F525A2D1A400D0C53A /* LocationListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 130E87F425A2D1A400D0C53A /* LocationListView.swift */; };
 		130E87FA25A2D1BE00D0C53A /* DashBoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 130E87F925A2D1BE00D0C53A /* DashBoardView.swift */; };
+		13CCEA6125A305FD001461D7 /* Tour+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13CCEA5F25A305FD001461D7 /* Tour+CoreDataClass.swift */; };
+		13CCEA6225A305FD001461D7 /* Tour+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13CCEA6025A305FD001461D7 /* Tour+CoreDataProperties.swift */; };
+		13CCEA6825A30651001461D7 /* TourDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13CCEA6625A30651001461D7 /* TourDatabase.swift */; };
+		13CCEA6925A30651001461D7 /* QueryTour.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13CCEA6725A30651001461D7 /* QueryTour.swift */; };
+		13CCEA7425A3143F001461D7 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13CCEA7325A3143F001461D7 /* Extensions.swift */; };
 		8FD3429325A2D99A0006C23F /* EditTourController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FD3429025A2D99A0006C23F /* EditTourController.swift */; };
 		8FD3429425A2D99A0006C23F /* EditTourView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FD3429225A2D99A0006C23F /* EditTourView.swift */; };
 /* End PBXBuildFile section */
@@ -73,6 +78,11 @@
 		130E87EC25A2D18600D0C53A /* LocationListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationListController.swift; sourceTree = "<group>"; };
 		130E87F425A2D1A400D0C53A /* LocationListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationListView.swift; sourceTree = "<group>"; };
 		130E87F925A2D1BE00D0C53A /* DashBoardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashBoardView.swift; sourceTree = "<group>"; };
+		13CCEA5F25A305FD001461D7 /* Tour+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Tour+CoreDataClass.swift"; sourceTree = "<group>"; };
+		13CCEA6025A305FD001461D7 /* Tour+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Tour+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		13CCEA6625A30651001461D7 /* TourDatabase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TourDatabase.swift; sourceTree = "<group>"; };
+		13CCEA6725A30651001461D7 /* QueryTour.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QueryTour.swift; sourceTree = "<group>"; };
+		13CCEA7325A3143F001461D7 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		8FD3429025A2D99A0006C23F /* EditTourController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditTourController.swift; sourceTree = "<group>"; };
 		8FD3429225A2D99A0006C23F /* EditTourView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditTourView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -196,6 +206,8 @@
 		130E851125A2C54C00D0C53A /* Database Manager */ = {
 			isa = PBXGroup;
 			children = (
+				13CCEA4425A30546001461D7 /* Database Model */,
+				13CCEA4325A3053C001461D7 /* Core data Classes */,
 				130E869025A2C54E00D0C53A /* Persistence */,
 			);
 			path = "Database Manager";
@@ -217,6 +229,7 @@
 				130E87B625A2C5F700D0C53A /* LIApplication.swift */,
 				130E87B725A2C5F700D0C53A /* ProjectLog.swift */,
 				130E87B825A2C5F700D0C53A /* LIConstant.swift */,
+				13CCEA7325A3143F001461D7 /* Extensions.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -278,6 +291,40 @@
 				130E87F425A2D1A400D0C53A /* LocationListView.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		13CCEA4325A3053C001461D7 /* Core data Classes */ = {
+			isa = PBXGroup;
+			children = (
+				13CCEA4525A3054E001461D7 /* Tour */,
+			);
+			path = "Core data Classes";
+			sourceTree = "<group>";
+		};
+		13CCEA4425A30546001461D7 /* Database Model */ = {
+			isa = PBXGroup;
+			children = (
+				13CCEA4625A30553001461D7 /* Tour */,
+			);
+			path = "Database Model";
+			sourceTree = "<group>";
+		};
+		13CCEA4525A3054E001461D7 /* Tour */ = {
+			isa = PBXGroup;
+			children = (
+				13CCEA5F25A305FD001461D7 /* Tour+CoreDataClass.swift */,
+				13CCEA6025A305FD001461D7 /* Tour+CoreDataProperties.swift */,
+			);
+			path = Tour;
+			sourceTree = "<group>";
+		};
+		13CCEA4625A30553001461D7 /* Tour */ = {
+			isa = PBXGroup;
+			children = (
+				13CCEA6625A30651001461D7 /* TourDatabase.swift */,
+				13CCEA6725A30651001461D7 /* QueryTour.swift */,
+			);
+			path = Tour;
 			sourceTree = "<group>";
 		};
 		8FD3428E25A2D99A0006C23F /* Edit Tour  */ = {
@@ -442,13 +489,18 @@
 				130E87ED25A2D18600D0C53A /* LocationListController.swift in Sources */,
 				130E84DF25A2C3A700D0C53A /* Tour.xcdatamodeld in Sources */,
 				8FD3429325A2D99A0006C23F /* EditTourController.swift in Sources */,
+				13CCEA7425A3143F001461D7 /* Extensions.swift in Sources */,
+				13CCEA6825A30651001461D7 /* TourDatabase.swift in Sources */,
 				130E87A825A2C54F00D0C53A /* DBManager.swift in Sources */,
 				130E87F525A2D1A400D0C53A /* LocationListView.swift in Sources */,
+				13CCEA6125A305FD001461D7 /* Tour+CoreDataClass.swift in Sources */,
 				130E87C125A2C5F700D0C53A /* ProjectLog.swift in Sources */,
 				130E87FA25A2D1BE00D0C53A /* DashBoardView.swift in Sources */,
 				8FD3429425A2D99A0006C23F /* EditTourView.swift in Sources */,
+				13CCEA6225A305FD001461D7 /* Tour+CoreDataProperties.swift in Sources */,
 				130E87C225A2C5F700D0C53A /* LIConstant.swift in Sources */,
 				130E87C025A2C5F700D0C53A /* LIApplication.swift in Sources */,
+				13CCEA6925A30651001461D7 /* QueryTour.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -15,6 +15,21 @@ class DashBoardController: UIViewController {
         super.viewDidLoad()
         
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        refreshMap()
+    }
+}
+
+// MARK: - Prepare View  -
+private extension DashBoardController {
+    
+    final private func refreshMap() {
+        if let view = view as? DashBoardView {
+            view.refreshAnnotations = true
+        }
+    }
 }
 
 // MARK: - DashBoard Delegate -
