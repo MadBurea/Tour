@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import CoreData
 
 class QueryTourLocation {
     
@@ -38,5 +39,9 @@ extension QueryTourLocation {
     func getList(where predicate: NSPredicate?) -> [TourLocationDetail] {
         let items: [TourLocationDetail] = try! repository.getAll(where: predicate)
         return items
+    }
+    
+    func getAllManagedObject() -> [NSManagedObject] {
+        return try! repository.getManagedObjects(with: nil)
     }
 }

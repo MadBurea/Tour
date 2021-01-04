@@ -10,6 +10,7 @@ import UIKit
 // MARK: - View Delegate -
 @objc protocol LocationListDelegate {
     func backNavigation(_ sender: UIButton)
+    func exportLocation(_ view: LocationListView)
 }
 
 class LocationListView: UIView {
@@ -17,11 +18,14 @@ class LocationListView: UIView {
     // MARK: - Outlets -
     @IBOutlet weak var delegate: LocationListDelegate?
     @IBOutlet private weak var stackLocation: UIStackView!
+    @IBOutlet private weak var scrollView: UIScrollView!
     
     // MARK: - Variable -
     var locationDetails: [TourLocationDetail]! {
         didSet {
-            addLocations(locationDetails)
+            if Thread.isMainThread {
+                addLocations(locationDetails)
+            }
         }
     }
     
@@ -39,6 +43,11 @@ private extension LocationListView {
         guard let delegate = delegate else { return }
         delegate.backNavigation(sender)
     }
+    
+    @IBAction final private func btnExportAction(_ sender: UIButton) {
+        guard let delegate = delegate else { return }
+        delegate.exportLocation(self)
+    }
 }
 
 // MARK: - Add Notification -
@@ -54,6 +63,8 @@ private extension LocationListView {
             stackLocation.addArrangedSubview(locationView)
         }
         if list.isEmpty { addNoDataView() }
+        let bottomOffset = CGPoint(x: 0, y: scrollView.contentSize.height - scrollView.bounds.size.height)
+        scrollView.setContentOffset(bottomOffset, animated: false)
     }
     
     final private func removeNoData() {
