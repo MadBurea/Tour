@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -40,6 +40,7 @@
 		13CCEAA225A34000001461D7 /* NotificationListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13CCEAA025A34000001461D7 /* NotificationListView.xib */; };
 		13CCEAA925A3408B001461D7 /* NoDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13CCEAA725A3408B001461D7 /* NoDataView.swift */; };
 		13CCEAAA25A3408B001461D7 /* NoDataView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13CCEAA825A3408B001461D7 /* NoDataView.xib */; };
+		13CCEAB825A372E1001461D7 /* TourAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13CCEAB725A372E1001461D7 /* TourAnnotation.swift */; };
 		67DE93D22955036210795403 /* Pods_TourTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8521916BE9B2805A4398F336 /* Pods_TourTests.framework */; };
 		6CC5E21147C49512BF49F9E7 /* Pods_Tour_TourUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99AB0235E7D40DDC7D0A51D7 /* Pods_Tour_TourUITests.framework */; };
 		8FD3429325A2D99A0006C23F /* EditTourController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FD3429025A2D99A0006C23F /* EditTourController.swift */; };
@@ -105,6 +106,7 @@
 		13CCEAA025A34000001461D7 /* NotificationListView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NotificationListView.xib; sourceTree = "<group>"; };
 		13CCEAA725A3408B001461D7 /* NoDataView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoDataView.swift; sourceTree = "<group>"; };
 		13CCEAA825A3408B001461D7 /* NoDataView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NoDataView.xib; sourceTree = "<group>"; };
+		13CCEAB725A372E1001461D7 /* TourAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TourAnnotation.swift; sourceTree = "<group>"; };
 		1DCD353EE8782AF1D853E6EC /* Pods-Tour-TourUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tour-TourUITests.debug.xcconfig"; path = "Target Support Files/Pods-Tour-TourUITests/Pods-Tour-TourUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		8521916BE9B2805A4398F336 /* Pods_TourTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TourTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B6D198F25D4B223AB2E4ABA /* Pods-TourTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TourTests.release.xcconfig"; path = "Target Support Files/Pods-TourTests/Pods-TourTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -272,6 +274,7 @@
 		130E87D525A2C72900D0C53A /* Map */ = {
 			isa = PBXGroup;
 			children = (
+				13CCEAB625A372BE001461D7 /* Annotation */,
 				130E87E925A2D15300D0C53A /* View */,
 				130E87E825A2D14C00D0C53A /* Controller */,
 			);
@@ -405,6 +408,14 @@
 			path = "No Data View";
 			sourceTree = "<group>";
 		};
+		13CCEAB625A372BE001461D7 /* Annotation */ = {
+			isa = PBXGroup;
+			children = (
+				13CCEAB725A372E1001461D7 /* TourAnnotation.swift */,
+			);
+			path = Annotation;
+			sourceTree = "<group>";
+		};
 		8FD3428E25A2D99A0006C23F /* Edit Tour  */ = {
 			isa = PBXGroup;
 			children = (
@@ -440,7 +451,6 @@
 				CF4EA08E5B4F151536F851F6 /* Pods-TourTests.debug.xcconfig */,
 				8B6D198F25D4B223AB2E4ABA /* Pods-TourTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -699,6 +709,7 @@
 				130E87A825A2C54F00D0C53A /* DBManager.swift in Sources */,
 				130E87F525A2D1A400D0C53A /* LocationListView.swift in Sources */,
 				13CCEAA125A34000001461D7 /* NotificationListView.swift in Sources */,
+				13CCEAB825A372E1001461D7 /* TourAnnotation.swift in Sources */,
 				13CCEA6125A305FD001461D7 /* Tour+CoreDataClass.swift in Sources */,
 				13CCEA7A25A32825001461D7 /* LocationManager.swift in Sources */,
 				13CCEA9225A33109001461D7 /* TourLocationDB.swift in Sources */,

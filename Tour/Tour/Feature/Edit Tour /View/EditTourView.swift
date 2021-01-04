@@ -7,6 +7,7 @@
 
 import UIKit
 import MapKit
+import AVKit
 
 struct VideoFile {
     var fileName = ""
@@ -41,6 +42,10 @@ class EditTourView: UIView {
     final private var latitude: Double = 0
     final private var longitude: Double = 0
     
+    final private var player = AVPlayer()
+    final private var playerLayer = AVPlayerLayer()
+    
+    final private var playVideo = false
     var tourFlow: TourFlow! {
         didSet {
             setTour()
@@ -68,8 +73,11 @@ class EditTourView: UIView {
 private extension EditTourView {
     
     @IBAction final private func didTapOnSelectVideo() {
-        
-        if iconClose.isHidden {
+        if playVideo {
+            let videoUrl = URL(fileURLWithPath: filePath)
+            playVideo(playableURL: videoUrl)
+            
+        } else if iconClose.isHidden {
             guard let delegate = delegate else { return }
             delegate.attachVideo(self)
         } else {
@@ -96,6 +104,18 @@ private extension EditTourView {
                 guard let delegate = self.delegate else { return }
                 delegate.backNavigation(self)
             }
+        }
+    }
+    
+    private func playVideo(playableURL: URL?) {
+        if let videoURL = playableURL {
+            player = AVPlayer(url: videoURL)
+        }
+        player.volume = 10
+        let playerViewController = AVPlayerViewController()
+        playerViewController.player = player
+        superview?.parentViewController?.present(playerViewController, animated: true) {
+            playerViewController.player!.play()
         }
     }
 }
@@ -140,6 +160,17 @@ private extension EditTourView {
             longitude = location.longitude
             latitude = location.latitude
             
+        case .ViewTour(let annotation):
+            playVideo = true
+            lblUploadVideo.text = "Play Video"
+            addVideoButton.isHidden = true
+            filePath = annotation.filePath ?? ""
+
+            textFieldTitle.text = annotation.title?.capitalized
+            textFieldTitle.isUserInteractionEnabled = false
+            
+            textViewTitle.isUserInteractionEnabled = false
+            textViewTitle.text = annotation.subtitle?.capitalized
         default:
             break
         }

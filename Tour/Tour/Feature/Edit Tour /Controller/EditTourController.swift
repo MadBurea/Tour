@@ -12,6 +12,7 @@ import AVFoundation
 import AVKit
 
 enum TourFlow {
+    case ViewTour(_ tourAnnotation: TourAnnotation)
     case AddTour(_ coordinate: CLLocationCoordinate2D)
     case None
 }

@@ -46,4 +46,11 @@ extension DashBoardController: DashBoardDelegate {
             navigationController?.pushViewController(controller, animated: true)
         }
     }
+    
+    func viewTour(_ annotation: TourAnnotation) {
+        if let controller = storyboard?.instantiateViewController(withIdentifier: "EditTourController") as? EditTourController {
+            controller.tourFlow = .ViewTour(annotation)
+            navigationController?.pushViewController(controller, animated: true)
+        }
+    }
 }

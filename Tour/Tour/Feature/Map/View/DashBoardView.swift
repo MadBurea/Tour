@@ -12,6 +12,7 @@ import MapKit
 @objc protocol DashBoardDelegate {
     func locationListNavigation(_ sender: UIButton)
     func goToAddTour(_ coordinate: CLLocationCoordinate2D)
+    func viewTour(_ annotation: TourAnnotation)
 }
 
 class DashBoardView: UIView {
@@ -22,6 +23,8 @@ class DashBoardView: UIView {
     
     // MARK: - Variable -
     final private var tourDetails = [TourDetails]()
+    final private let annotations = TourAnnotations()
+    final private let identifier = "Tourism"
 
     var refreshAnnotations: Bool! {
         didSet {
@@ -54,17 +57,33 @@ private extension DashBoardView {
     final private func setAnnotation() {
         
         tourDetails = getTour()
-        plog(tourDetails)
-        
         mapView.removeAnnotations(mapView.annotations)
+        annotations.tours.removeAll()
         
         tourDetails.forEach { (tour) in
-            let annotation = MKPointAnnotation()
-            annotation.coordinate = tour.coordinate
-            annotation.title = tour.title
-            annotation.subtitle = tour.descriptions
-            mapView.addAnnotation(annotation)
+            let annotation = TourAnnotation(tour.latitude,
+                                            tour.longitude,
+                                            title: tour.title,
+                                            subtitle: tour.descriptions,
+                                            color: tour.color,
+                                            filePath: tour.filePath)
+            
+            annotations.tours.append(annotation)
         }
+        mapView.addAnnotations(annotations.tours)
+        
+        var zoomRect: MKMapRect = MKMapRect.null
+        for annotation in mapView.annotations {
+            let annotationPoint = MKMapPoint(annotation.coordinate)
+            let pointRect = MKMapRect(x: annotationPoint.x,
+                                      y: annotationPoint.y,
+                                      width: 0.5,
+                                      height: 0.5)
+            zoomRect = zoomRect.union(pointRect)
+        }
+        mapView.setVisibleMapRect(zoomRect,
+                                  edgePadding: UIEdgeInsets(top: 50, left: 50, bottom: 50, right: 50),
+                                  animated: true)
     }
 }
 
@@ -89,30 +108,33 @@ private extension DashBoardView {
 }
 
 extension DashBoardView: MKMapViewDelegate {
-    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
-        
+    
+    func mapView(_ mapView: MKMapView,
+                 didSelect view: MKAnnotationView) {
+        if let eventAnnotation = view.annotation as? TourAnnotation {
+            plog(eventAnnotation)
+            guard let delegate = delegate else { return }
+            delegate.viewTour(eventAnnotation)
+        }
     }
     
-//    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-//
-//        guard !annotation.isKind(of: MKUserLocation.self) else {
-//            return nil
-//        }
-//
-//        let annotationIdentifier = "AnnotationIdentifier"
-//
-//        var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: annotationIdentifier)
-//        if annotationView == nil {
-//            annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: annotationIdentifier)
-//           // annotationView?.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
-//            annotationView!.canShowCallout = true
-//        }
-//        else {
-//            annotationView!.annotation = annotation
-//        }
-//
-//        annotationView!.image = UIImage(named: "iconList.png")
-//
-//        return annotationView
-//    }
+    func mapView(_ mapView: MKMapView,
+                 viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        
+        var annotationView = MKMarkerAnnotationView()
+        guard let annotation = annotation as? TourAnnotation else { return nil }
+        
+        if let dequedView = mapView.dequeueReusableAnnotationView(
+            withIdentifier: identifier)
+            as? MKMarkerAnnotationView {
+            annotationView = dequedView
+        } else{
+            annotationView = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+        }
+        annotationView.markerTintColor = annotation.color?.toUIColor()
+        annotationView.glyphImage = UIImage(named: "tour")
+        annotationView.glyphTintColor = .red
+        annotationView.clusteringIdentifier = identifier
+        return annotationView
+    }
 }
