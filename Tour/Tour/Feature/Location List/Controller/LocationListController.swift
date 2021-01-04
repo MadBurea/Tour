@@ -15,6 +15,7 @@ class LocationListController: UIViewController {
     final private let ok = "Ok"
     final private let locationTracking = "No Location tracking found yet"
     final private let fileName = "locationTracking.csv"
+    final private let newLocationUpdate = "New Tracking Location Found"
     
     // MARK: - View Life Cycle -
     override func viewDidLoad() {
@@ -71,13 +72,20 @@ private extension LocationListController {
         }
     }
     
+    @IBAction final private func showNewLocation() {
+        refreshLocation()
+        if Thread.isMainThread {
+            showToast(message: newLocationUpdate, seconds: 5.0)
+        }
+    }
+    
     final private func updateNewLocation() {
         NotificationCenter.default.removeObserver(self,
                                                   name: NSNotification.Name(rawValue: TSLocationManger.LOCATION_TRACKING),
                                                   object: nil)
         NotificationCenter.default.addObserver(
             self,
-            selector: #selector(self.refreshLocation),
+            selector: #selector(showNewLocation),
             name: NSNotification.Name(rawValue: TSLocationManger.LOCATION_TRACKING),
             object: nil)
     }
