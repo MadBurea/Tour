@@ -26,6 +26,8 @@
 		130E87ED25A2D18600D0C53A /* LocationListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 130E87EC25A2D18600D0C53A /* LocationListController.swift */; };
 		130E87F525A2D1A400D0C53A /* LocationListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 130E87F425A2D1A400D0C53A /* LocationListView.swift */; };
 		130E87FA25A2D1BE00D0C53A /* DashBoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 130E87F925A2D1BE00D0C53A /* DashBoardView.swift */; };
+		8FD3429325A2D99A0006C23F /* EditTourController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FD3429025A2D99A0006C23F /* EditTourController.swift */; };
+		8FD3429425A2D99A0006C23F /* EditTourView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FD3429225A2D99A0006C23F /* EditTourView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +73,8 @@
 		130E87EC25A2D18600D0C53A /* LocationListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationListController.swift; sourceTree = "<group>"; };
 		130E87F425A2D1A400D0C53A /* LocationListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationListView.swift; sourceTree = "<group>"; };
 		130E87F925A2D1BE00D0C53A /* DashBoardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashBoardView.swift; sourceTree = "<group>"; };
+		8FD3429025A2D99A0006C23F /* EditTourController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditTourController.swift; sourceTree = "<group>"; };
+		8FD3429225A2D99A0006C23F /* EditTourView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditTourView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -156,6 +160,7 @@
 		130E850D25A2C40400D0C53A /* Feature */ = {
 			isa = PBXGroup;
 			children = (
+				8FD3428E25A2D99A0006C23F /* Edit Tour  */,
 				130E87E725A2D03A00D0C53A /* Location List */,
 				130E87D525A2C72900D0C53A /* Map */,
 			);
@@ -271,6 +276,31 @@
 			isa = PBXGroup;
 			children = (
 				130E87F425A2D1A400D0C53A /* LocationListView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		8FD3428E25A2D99A0006C23F /* Edit Tour  */ = {
+			isa = PBXGroup;
+			children = (
+				8FD3428F25A2D99A0006C23F /* Controller */,
+				8FD3429125A2D99A0006C23F /* View */,
+			);
+			path = "Edit Tour ";
+			sourceTree = "<group>";
+		};
+		8FD3428F25A2D99A0006C23F /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				8FD3429025A2D99A0006C23F /* EditTourController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		8FD3429125A2D99A0006C23F /* View */ = {
+			isa = PBXGroup;
+			children = (
+				8FD3429225A2D99A0006C23F /* EditTourView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -411,10 +441,12 @@
 				130E84D525A2C3A700D0C53A /* AppDelegate.swift in Sources */,
 				130E87ED25A2D18600D0C53A /* LocationListController.swift in Sources */,
 				130E84DF25A2C3A700D0C53A /* Tour.xcdatamodeld in Sources */,
+				8FD3429325A2D99A0006C23F /* EditTourController.swift in Sources */,
 				130E87A825A2C54F00D0C53A /* DBManager.swift in Sources */,
 				130E87F525A2D1A400D0C53A /* LocationListView.swift in Sources */,
 				130E87C125A2C5F700D0C53A /* ProjectLog.swift in Sources */,
 				130E87FA25A2D1BE00D0C53A /* DashBoardView.swift in Sources */,
+				8FD3429425A2D99A0006C23F /* EditTourView.swift in Sources */,
 				130E87C225A2C5F700D0C53A /* LIConstant.swift in Sources */,
 				130E87C025A2C5F700D0C53A /* LIApplication.swift in Sources */,
 			);
