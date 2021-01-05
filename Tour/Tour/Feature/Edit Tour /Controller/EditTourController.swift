@@ -48,7 +48,7 @@ private extension EditTourController {
 // MARK: - Edit Tour Delegate -
 extension EditTourController: EditTourDelegate {
     
-    func attachVideo(_ view: EditTourView) {
+    func attachVideo() {
         let imagePickerController = UIImagePickerController()
         imagePickerController.sourceType = .photoLibrary
         imagePickerController.delegate = self
@@ -58,7 +58,7 @@ extension EditTourController: EditTourDelegate {
         present(imagePickerController, animated: true, completion: nil)
     }
     
-    func backNavigation(_ view: EditTourView) {
+    func backNavigation() {
         navigationController?.popViewController(animated: true)
     }
 }

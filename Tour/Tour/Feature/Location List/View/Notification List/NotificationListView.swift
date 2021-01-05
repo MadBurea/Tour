@@ -16,7 +16,6 @@ class NotificationListView: UIView {
     @IBOutlet weak private var lblNo: UILabel!
     
     // MARK: - variables -
-    final private let date = Date()
     final private let format = "dd-MMM-yyyy HH:mm:ss"
     
     var index = 0
@@ -27,11 +26,5 @@ class NotificationListView: UIView {
             let updatedDate = list.time.getFormattedDate(format: format)
             lblDate.text = "Updated at: \(updatedDate)"
         }
-    }
-    
-    // MARK: - View life Cycle -
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        
     }
 }

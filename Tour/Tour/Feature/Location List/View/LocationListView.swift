@@ -9,8 +9,8 @@ import UIKit
 
 // MARK: - View Delegate -
 @objc protocol LocationListDelegate {
-    func backNavigation(_ sender: UIButton)
-    func exportLocation(_ view: LocationListView)
+    func backNavigation()
+    func exportLocation()
 }
 
 class LocationListView: UIView {
@@ -39,14 +39,14 @@ class LocationListView: UIView {
 // MARK: - View Action -
 private extension LocationListView {
     
-    @IBAction final private func btnBackAction(_ sender: UIButton) {
+    @IBAction final private func btnBackAction() {
         guard let delegate = delegate else { return }
-        delegate.backNavigation(sender)
+        delegate.backNavigation()
     }
     
-    @IBAction final private func btnExportAction(_ sender: UIButton) {
+    @IBAction final private func btnExportAction() {
         guard let delegate = delegate else { return }
-        delegate.exportLocation(self)
+        delegate.exportLocation()
     }
 }
 

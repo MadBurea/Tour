@@ -16,8 +16,16 @@ struct VideoFile {
 
 // MARK: - View Delegate -
 @objc protocol EditTourDelegate {
-    func attachVideo(_ view: EditTourView)
-    func backNavigation(_ view: EditTourView)
+    func attachVideo()
+    func backNavigation()
+}
+
+private struct EditTourAlertKeys {
+    static let tourTilteError = "Please enter tour title"
+    static let tourVideoError = "Please select tour video"
+    static let tourSuccess = "Tour created successfully"
+    static let alertTitle = "Alert"
+    static let ok = "Ok"
 }
 
 class EditTourView: UIView {
@@ -33,11 +41,7 @@ class EditTourView: UIView {
     @IBOutlet final weak private var uploadView : UIView!
     
     // MARK: - Constant -
-    final private let tourTilteError = "Please enter tour title"
-    final private let tourVideoError = "Please select tour video"
-    final private let tourSuccess = "Tour created successfully"
-    final private let alertTitle = "Alert"
-    final private let ok = "Ok"
+
     final private var filePath = ""
     final private var latitude: Double = 0
     final private var longitude: Double = 0
@@ -75,11 +79,10 @@ private extension EditTourView {
     @IBAction final private func didTapOnSelectVideo() {
         if playVideo {
             let videoUrl = URL(fileURLWithPath: filePath)
-            playVideo(playableURL: videoUrl)
-            
+            playVideo(videoUrl)
         } else if iconClose.isHidden {
             guard let delegate = delegate else { return }
-            delegate.attachVideo(self)
+            delegate.attachVideo()
         } else {
             lblFileName.isHidden = true
             lblUploadVideo.isHidden = false
@@ -87,27 +90,27 @@ private extension EditTourView {
         }
     }
     
-    @IBAction final private func btnBackAction(_ sender: UIButton) {
+    @IBAction final private func btnBackAction() {
         guard let delegate = delegate else { return }
-        delegate.backNavigation(self)
+        delegate.backNavigation()
     }
     
     @IBAction final private func didTapOnSave() {
-        if isValidation() {
+        if isValidData() {
             setOfflineTour(TourDetails(title: textFieldTitle.text ?? "",
                                        descriptions: textViewTitle.text,
                                        filePath: filePath,
                                        latitude: latitude,
                                        longitude: longitude))
             
-            alertOk(message: tourSuccess) {
+            alertWithOk(EditTourAlertKeys.tourSuccess) {
                 guard let delegate = self.delegate else { return }
-                delegate.backNavigation(self)
+                delegate.backNavigation()
             }
         }
     }
     
-    private func playVideo(playableURL: URL?) {
+    private func playVideo(_ playableURL: URL?) {
         if let videoURL = playableURL {
             player = AVPlayer(url: videoURL)
         }
@@ -123,25 +126,25 @@ private extension EditTourView {
 // MARK: - Prepare View -
 private extension EditTourView {
     
-    final private func alertOk(message: String,
+    final private func alertWithOk(_ message: String,
                                completionSucess: (() -> Void)? = nil) {
         
-        let alert = UIAlertController(title: alertTitle,
+        let alert = UIAlertController(title: EditTourAlertKeys.alertTitle,
                                       message: message,
                                       preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: ok, style: .default, handler: { _ in
+        alert.addAction(UIAlertAction(title: EditTourAlertKeys.ok, style: .default, handler: { _ in
             completionSucess?()
         }))
         LIApplication.appDelegate.window?.rootViewController?.present(alert, animated: true, completion: nil)
     }
     
-    final private func isValidation() -> Bool {
+    final private func isValidData() -> Bool {
         
         if textFieldTitle.text?.isEmpty ?? false {
-            alertOk(message: tourTilteError)
+            alertWithOk(EditTourAlertKeys.tourTilteError)
             return false
         } else if lblFileName.isHidden {
-            alertOk(message: tourVideoError)
+            alertWithOk(EditTourAlertKeys.tourVideoError)
             return false
         }
         return true

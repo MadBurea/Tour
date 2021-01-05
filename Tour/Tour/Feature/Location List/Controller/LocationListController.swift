@@ -8,14 +8,15 @@
 import UIKit
 import CoreData
 
+private struct LocationListKeys {
+    static let alertTitle = "Alert"
+    static let ok = "Ok"
+    static let locationTracking = "No Location tracking found yet"
+    static let fileName = "locationTracking.csv"
+    static let newLocationUpdate = "New Tracking Location Found"
+}
+
 class LocationListController: UIViewController {
-    
-    // MARK: - Variable -
-    final private let alertTitle = "Alert"
-    final private let ok = "Ok"
-    final private let locationTracking = "No Location tracking found yet"
-    final private let fileName = "locationTracking.csv"
-    final private let newLocationUpdate = "New Tracking Location Found"
     
     // MARK: - View Life Cycle -
     override func viewDidLoad() {
@@ -27,14 +28,14 @@ class LocationListController: UIViewController {
 // MARK: - List Delegate -
 extension LocationListController: LocationListDelegate {
     
-    func backNavigation(_ sender: UIButton) {
+    func backNavigation() {
         navigationController?.popViewController(animated: true)
     }
     
-    func exportLocation(_ view: LocationListView) {
+    func exportLocation() {
         let list = getTourLocation()
         if list.isEmpty {
-            alertOk(message: locationTracking)
+            alertOk(message: LocationListKeys.locationTracking)
         } else {
             exportDatabase()
         }
@@ -57,10 +58,10 @@ private extension LocationListController {
     final private func alertOk(message: String,
                                completionSucess: (() -> Void)? = nil) {
         
-        let alert = UIAlertController(title: alertTitle,
+        let alert = UIAlertController(title: LocationListKeys.alertTitle,
                                       message: message,
                                       preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: ok, style: .default, handler: { _ in
+        alert.addAction(UIAlertAction(title: LocationListKeys.ok, style: .default, handler: { _ in
             completionSucess?()
         }))
         LIApplication.appDelegate.window?.rootViewController?.present(alert, animated: true, completion: nil)
@@ -75,7 +76,7 @@ private extension LocationListController {
     @IBAction final private func showNewLocation() {
         refreshLocation()
         if Thread.isMainThread {
-            showToast(message: newLocationUpdate, seconds: 5.0)
+            showToast(message: LocationListKeys.newLocationUpdate, seconds: 5.0)
         }
     }
     
@@ -107,7 +108,7 @@ private extension LocationListController {
     final private func saveAndExport(exportString: String) {
         let documentsDirectoryURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
         
-        let exportFilePath = documentsDirectoryURL.appendingPathComponent(fileName)
+        let exportFilePath = documentsDirectoryURL.appendingPathComponent(LocationListKeys.fileName)
         plog(exportFilePath)
         
         let exportFileURL = NSURL(fileURLWithPath: exportFilePath.path)

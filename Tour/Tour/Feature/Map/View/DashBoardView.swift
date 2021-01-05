@@ -10,7 +10,7 @@ import MapKit
 
 // MARK: - View Delegate -
 @objc protocol DashBoardDelegate {
-    func locationListNavigation(_ sender: UIButton)
+    func locationListNavigation()
     func goToAddTour(_ coordinate: CLLocationCoordinate2D)
     func viewTour(_ annotation: TourAnnotation)
 }
@@ -45,9 +45,7 @@ private extension DashBoardView {
         mapView.showsUserLocation = true
         
         let gestureRecognizer = UILongPressGestureRecognizer(target: self, action:#selector(handleTap))
-        gestureRecognizer.minimumPressDuration = 1.0;
         mapView.addGestureRecognizer(gestureRecognizer)
-        mapView.isExclusiveTouch = true
     }
     
     final  private func getTour() -> [TourDetails] {
@@ -93,10 +91,10 @@ private extension DashBoardView {
     
     @IBAction final private func btnListAction(_ sender: UIButton) {
         guard let delegate = delegate else { return }
-        delegate.locationListNavigation(sender)
+        delegate.locationListNavigation()
     }
     
-    @objc final private func handleTap(gestureRecognizer: UILongPressGestureRecognizer) {
+    @objc final private func handleTap(_ gestureRecognizer: UILongPressGestureRecognizer) {
         
          if gestureRecognizer.state == .ended {
             let location = gestureRecognizer.location(in: mapView)
