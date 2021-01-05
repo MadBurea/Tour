@@ -25,7 +25,7 @@ class DashBoardView: UIView {
     final private var tourDetails = [TourDetails]()
     final private let annotations = TourAnnotations()
     final private let identifier = "Tourism"
-
+    
     var refreshAnnotations: Bool! {
         didSet {
             setAnnotation()
@@ -46,6 +46,7 @@ private extension DashBoardView {
         mapView.showsUserLocation = true
         
         let gestureRecognizer = UITapGestureRecognizer(target: self, action:#selector(handleTap))
+        gestureRecognizer.delegate = self
         mapView.addGestureRecognizer(gestureRecognizer)
     }
     
@@ -84,6 +85,14 @@ private extension DashBoardView {
         mapView.setVisibleMapRect(zoomRect,
                                   edgePadding: UIEdgeInsets(top: 50, left: 50, bottom: 50, right: 50),
                                   animated: true)
+    }
+}
+
+// MARK: - UIGestureRecognizer Delegate -
+extension DashBoardView: UIGestureRecognizerDelegate {
+    
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        return true
     }
 }
 
