@@ -53,7 +53,7 @@
                                 <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" image="iconList"/>
                                 <connections>
-                                    <action selector="btnListAction:" destination="8bC-Xf-vdC" eventType="touchUpInside" id="SqJ-U9-hxp"/>
+                                    <action selector="btnListAction:" destination="8bC-Xf-vdC" eventType="touchUpInside" id="nma-WD-ViN"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -167,7 +167,7 @@
                                 <inset key="contentEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
                                 <state key="normal" image="iconBack"/>
                                 <connections>
-                                    <action selector="btnBackAction:" destination="MD6-dZ-ze6" eventType="touchUpInside" id="tid-vB-pCc"/>
+                                    <action selector="btnBackAction" destination="MD6-dZ-ze6" eventType="touchUpInside" id="Zbx-Sa-j1A"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Km1-w3-AB5">
@@ -178,7 +178,7 @@
                                 </constraints>
                                 <state key="normal" image="iconExport"/>
                                 <connections>
-                                    <action selector="btnExportAction:" destination="MD6-dZ-ze6" eventType="touchUpInside" id="Dtn-2c-YeU"/>
+                                    <action selector="btnExportAction" destination="MD6-dZ-ze6" eventType="touchUpInside" id="mmO-D4-kyy"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -337,7 +337,7 @@
                                 <inset key="contentEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
                                 <state key="normal" image="iconBack"/>
                                 <connections>
-                                    <action selector="btnBackAction:" destination="tbp-cy-4ZV" eventType="touchUpInside" id="14P-A2-IOL"/>
+                                    <action selector="btnBackAction" destination="tbp-cy-4ZV" eventType="touchUpInside" id="fz0-Se-5A0"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="100" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="*" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Hl-GF-R1C">
@@ -390,7 +390,7 @@
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xuz-tS-Dpl">
                                                 <rect key="frame" x="0.0" y="0.0" width="355" height="110"/>
                                                 <connections>
-                                                    <action selector="didTapOnSelectVideo" destination="tbp-cy-4ZV" eventType="touchUpInside" id="FMI-pU-3lc"/>
+                                                    <action selector="didTapOnSelectVideo" destination="tbp-cy-4ZV" eventType="touchUpInside" id="2MA-pG-OMp"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -431,7 +431,7 @@
                                     <color key="titleColor" red="0.99607843139999996" green="0.27450980390000002" blue="0.015686274510000001" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="didTapOnSave" destination="tbp-cy-4ZV" eventType="touchUpInside" id="3MG-XJ-Kfn"/>
+                                    <action selector="didTapOnSave" destination="tbp-cy-4ZV" eventType="touchUpInside" id="iee-x1-xPy"/>
                                 </connections>
                             </button>
                         </subviews>
