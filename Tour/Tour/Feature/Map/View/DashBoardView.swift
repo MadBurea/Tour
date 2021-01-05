@@ -23,9 +23,8 @@ class DashBoardView: UIView {
     
     // MARK: - Variable -
     final private var tourDetails = [TourDetails]()
-    final private let annotations = TourAnnotations()
     final private let identifier = "Tourism"
-    
+
     var refreshAnnotations: Bool! {
         didSet {
             setAnnotation()
@@ -45,9 +44,10 @@ private extension DashBoardView {
     final private func prepareView() {
         mapView.showsUserLocation = true
         
-        let gestureRecognizer = UITapGestureRecognizer(target: self, action:#selector(handleTap))
-        gestureRecognizer.delegate = self
+        let gestureRecognizer = UILongPressGestureRecognizer(target: self, action:#selector(handleTap))
+        gestureRecognizer.minimumPressDuration = 1.0;
         mapView.addGestureRecognizer(gestureRecognizer)
+        mapView.isExclusiveTouch = true
     }
     
     final  private func getTour() -> [TourDetails] {
@@ -59,9 +59,8 @@ private extension DashBoardView {
         
         tourDetails = getTour()
         mapView.removeAnnotations(mapView.annotations)
-        annotations.tours.removeAll()
         
-        tourDetails.forEach { (tour) in
+        let tourAnnotations = tourDetails.reduce(into: [TourAnnotation]()) { (result, tour) in
             let annotation = TourAnnotation(tour.latitude,
                                             tour.longitude,
                                             title: tour.title,
@@ -69,30 +68,23 @@ private extension DashBoardView {
                                             color: tour.color,
                                             filePath: tour.filePath)
             
-            annotations.tours.append(annotation)
+            result.append(annotation)
         }
-        mapView.addAnnotations(annotations.tours)
+        
+        mapView.addAnnotations(tourAnnotations)
         
         var zoomRect: MKMapRect = MKMapRect.null
         for annotation in mapView.annotations {
             let annotationPoint = MKMapPoint(annotation.coordinate)
             let pointRect = MKMapRect(x: annotationPoint.x,
                                       y: annotationPoint.y,
-                                      width: 0.5,
-                                      height: 0.5)
+                                      width: 0.1,
+                                      height: 0.1)
             zoomRect = zoomRect.union(pointRect)
         }
         mapView.setVisibleMapRect(zoomRect,
                                   edgePadding: UIEdgeInsets(top: 50, left: 50, bottom: 50, right: 50),
                                   animated: true)
-    }
-}
-
-// MARK: - UIGestureRecognizer Delegate -
-extension DashBoardView: UIGestureRecognizerDelegate {
-    
-    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
-        return true
     }
 }
 
@@ -105,14 +97,13 @@ private extension DashBoardView {
     }
     
     @objc final private func handleTap(gestureRecognizer: UILongPressGestureRecognizer) {
-        let location = gestureRecognizer.location(in: mapView)
-        let coordinate = mapView.convert(location, toCoordinateFrom: mapView)
         
-        let details = tourDetails.filter { $0.latitude == coordinate.latitude}
-        plog(details)
-        
-        guard let delegate = delegate else { return }
-        delegate.goToAddTour(coordinate)
+         if gestureRecognizer.state == .ended {
+            let location = gestureRecognizer.location(in: mapView)
+            let coordinate = mapView.convert(location, toCoordinateFrom: mapView)
+            guard let delegate = delegate else { return }
+            delegate.goToAddTour(coordinate)
+        }
     }
 }
 

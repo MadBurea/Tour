@@ -8,12 +8,12 @@
 import UIKit
 import MapKit
 
-class TourAnnotation: NSObject, MKAnnotation {
+class TourAnnotation: MKPointAnnotation {
     
     // MARK: - Variable -
-    var coordinate: CLLocationCoordinate2D
-    var title: String?
-    var subtitle: String?
+//    var coordinate: CLLocationCoordinate2D
+//    var title: String?
+//    var subtitle: String?
     var color: String?
     var filePath: String?
 
@@ -24,15 +24,11 @@ class TourAnnotation: NSObject, MKAnnotation {
          subtitle: String,
          color: String,
          filePath: String) {
+        super.init()
         self.coordinate = CLLocationCoordinate2DMake(latitude, longitude)
         self.title = title
         self.subtitle = subtitle
         self.color = color
         self.filePath = filePath
     }
-}
-
-
-class TourAnnotations: NSObject {
-    var tours = [TourAnnotation]()
 }
