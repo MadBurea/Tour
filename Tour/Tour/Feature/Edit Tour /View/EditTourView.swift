@@ -50,6 +50,7 @@ class EditTourView: UIView {
     final private var playerLayer = AVPlayerLayer()
     
     final private var playVideo = false
+    final private var noVideoFound = false
     var tourFlow: TourFlow! {
         didSet {
             setTour()
@@ -77,7 +78,9 @@ class EditTourView: UIView {
 private extension EditTourView {
     
     @IBAction final private func didTapOnSelectVideo() {
-        if playVideo {
+        if noVideoFound {
+            plog("No Video Found")
+        } else if playVideo {
             let videoUrl = URL(fileURLWithPath: filePath)
             playVideo(videoUrl)
         } else if iconClose.isHidden {
@@ -143,10 +146,12 @@ private extension EditTourView {
         if textFieldTitle.text?.isEmpty ?? false {
             alertWithOk(EditTourAlertKeys.tourTilteError)
             return false
-        } else if lblFileName.isHidden {
-            alertWithOk(EditTourAlertKeys.tourVideoError)
-            return false
         }
+        
+        //        else if lblFileName.isHidden {
+        //            alertWithOk(EditTourAlertKeys.tourVideoError)
+        //            return false
+        //        }
         return true
     }
     
@@ -169,6 +174,12 @@ private extension EditTourView {
             addVideoButton.isHidden = true
             filePath = annotation.filePath ?? ""
 
+            if filePath.isEmpty {
+                noVideoFound = true
+                playVideo = false
+                lblUploadVideo.text = "No Video Found"
+            }
+            
             textFieldTitle.text = annotation.title?.capitalized
             textFieldTitle.isUserInteractionEnabled = false
             

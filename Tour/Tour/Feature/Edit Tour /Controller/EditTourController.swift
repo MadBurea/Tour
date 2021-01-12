@@ -17,6 +17,17 @@ enum TourFlow {
     case None
 }
 
+private struct EditTourSuccessKeys {
+    static let tourCamera = "You can't access camera right now"
+    static let tourGallery = "You can't access gallery right now"
+    static let alertTitle = "Alert"
+    static let ok = "Ok"
+    static let selectVideo = "Select Video"
+    static let selectVideoMessage = "Please select below option to record or attach video from gallery"
+    static let recordVideo = "Record Video"
+    static let gallery = "Attach From Gallery"
+}
+
 class EditTourController: UIViewController {
     
     // MARK: - Variable -
@@ -49,17 +60,64 @@ private extension EditTourController {
 extension EditTourController: EditTourDelegate {
     
     func attachVideo() {
-        let imagePickerController = UIImagePickerController()
-        imagePickerController.sourceType = .photoLibrary
-        imagePickerController.delegate = self
-        imagePickerController.mediaTypes = [kUTTypeMovie as String]
-        imagePickerController.allowsEditing = true
-        imagePickerController.modalPresentationStyle = .overFullScreen
-        present(imagePickerController, animated: true, completion: nil)
+        let alert = UIAlertController(title: EditTourSuccessKeys.selectVideo,
+                                      message: EditTourSuccessKeys.selectVideoMessage,
+                                      preferredStyle: .alert)
+        
+        let camera = UIAlertAction(title: EditTourSuccessKeys.recordVideo,
+                                   style: .default, handler: { action in
+                                    self.openVideoPicker(.camera)
+                                   })
+        alert.addAction(camera)
+        let gallery = UIAlertAction(title: EditTourSuccessKeys.gallery,
+                                    style: .default, handler: { action in
+                                        self.openVideoPicker(.photoLibrary)
+                                    })
+        alert.addAction(gallery)
+        present(alert, animated: true)
     }
     
     func backNavigation() {
         navigationController?.popViewController(animated: true)
+    }
+    
+    final private func openVideoPicker(_ sourceType: UIImagePickerController.SourceType) {
+        
+        if UIImagePickerController.isSourceTypeAvailable(sourceType) {
+            let imagePickerController = UIImagePickerController()
+            imagePickerController.sourceType = sourceType
+            imagePickerController.delegate = self
+            imagePickerController.mediaTypes = [kUTTypeMovie as String]
+            imagePickerController.allowsEditing = true
+            imagePickerController.modalPresentationStyle = .overFullScreen
+            present(imagePickerController, animated: true, completion: nil)
+        } else {
+            showAlertForPicker(sourceType)
+        }       
+    }
+    
+    final private func showAlertForPicker(_ sourceType: UIImagePickerController.SourceType) {
+        if sourceType == .camera {
+            alertWithOk(EditTourSuccessKeys.tourCamera) {
+                self.dismiss(animated: true, completion: nil)
+            }
+        } else {
+            alertWithOk(EditTourSuccessKeys.tourGallery) {
+                self.dismiss(animated: true, completion: nil)
+            }
+        }
+    }
+    
+    final private func alertWithOk(_ message: String,
+                                   completionSucess: (() -> Void)? = nil) {
+        
+        let alert = UIAlertController(title: EditTourSuccessKeys.alertTitle,
+                                      message: message,
+                                      preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: EditTourSuccessKeys.ok, style: .default, handler: { _ in
+            completionSucess?()
+        }))
+        LIApplication.appDelegate.window?.rootViewController?.present(alert, animated: true, completion: nil)
     }
 }
 
